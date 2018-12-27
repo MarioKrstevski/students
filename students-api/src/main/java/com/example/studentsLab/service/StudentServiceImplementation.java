@@ -27,11 +27,11 @@ public class StudentServiceImplementation implements StudentsService {
 
     public void addData() {
         StudyProgram studyProgram = new StudyProgram();
-        studyProgram.setName("KNIA");
+        studyProgram.setName("PET");
         Student student = new Student();
-        student.setName("Gjorgjina");
-        student.setIndex("161517");
-        student.setLastName("Cenikj");
+        student.setName("Mario");
+        student.setIndex("152061");
+        student.setLastName("Krstevski");
         student.setStudyProgram(studyProgram);
 
         studyProgramRepo.save(studyProgram);
@@ -42,19 +42,19 @@ public class StudentServiceImplementation implements StudentsService {
         studyProgram.setName("PET");
         Student student1 = new Student();
         student1.setStudyProgram(studyProgram1);
-        student1.setLastName("Popeska");
-        student1.setIndex("151214");
-        student1.setName("Marija");
+        student1.setLastName("Stefanovska");
+        student1.setIndex("151212");
+        student1.setName("Stefanija");
 
         studyProgramRepo.save(studyProgram1);
         if (!studentRepo.existsById(student1.getIndex()))
             studentRepo.save(student1);
 
         Student student2 = new Student();
-        student2.setName("Nikola");
-        student2.setLastName("Nikolovski");
+        student2.setName("Stefan");
+        student2.setLastName("Stefanovski");
         student2.setStudyProgram(studyProgram);
-        student2.setIndex("151613");
+        student2.setIndex("151313");
         if (!studentRepo.existsById(student2.getIndex()))
             studentRepo.save(student2);
 
