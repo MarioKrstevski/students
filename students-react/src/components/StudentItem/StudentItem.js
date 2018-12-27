@@ -8,10 +8,10 @@ const StudentItem = (props) => {
 
 
             <div className="col-md-3">
-                {props.student.studentName}
+                {props.student.name}
             </div>
             <div className="col-md-3">
-                {props.student.studentSurname}
+                {props.student.lastName}
             </div>
             <div className="col-1"> <button onClick={() => props.edit(props.index)}> <i className="fa fa-edit"></i> </button> </div>
 

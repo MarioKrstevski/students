@@ -5,6 +5,8 @@ import 'font-awesome/css/font-awesome.css'
 import StudentsList from "./components/StudentsList/StudentsList";
 import EdiStudentDetails from "./components/EditStudentDetails/EditStudentDetails";
 import NewStudent from "./components/NewStudent";
+import { getStudentsFromApi, getStudyProgramsFromApi } from "./repository/studentsApi";
+import StudyProgramsList from "./components/StudyProgramsList/StudyProgramsList";
 
 import './App.css';
 import { listStudents } from "./repository/studentsReposotory";
@@ -14,7 +16,8 @@ class App extends Component {
         super(props);
 
         this.state = {
-            students: listStudents(),
+            students: [],
+            studyPrograms: [],
             showEdit: false,
             index: null
         };
@@ -83,8 +86,13 @@ class App extends Component {
 
                                 <div className="row">
 
+                                    <h2>Students</h2>
+
                                     <StudentsList students={this.state.students} edit={toggleEdit} delete={deleteStudent} />
 
+
+                                    <h2>Study Programs</h2>
+                                    <StudyProgramsList studyPrograms={this.state.studyPrograms}/>
                                 </div>
                             </div>
                         )} />
@@ -103,6 +111,34 @@ class App extends Component {
 
 
         );
+    }
+
+    loadStudents = () => {
+        getStudentsFromApi()
+            .then(response => response.json())
+            .then((data) => {
+                console.log('data: ', data)
+                this.setState({
+                    students: data
+                })
+            });
+
+    };
+
+    loadStudyPrograms = () => {
+        getStudyProgramsFromApi()
+            .then(response => response.json())
+            .then((data) => {
+                console.log('data: ', data)
+                this.setState({
+                    studyPrograms: data
+                })
+            });
+    };
+
+    componentDidMount(){
+        this.loadStudents()
+        this.loadStudyPrograms();
     }
 }
 

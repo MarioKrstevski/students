@@ -11,7 +11,9 @@
 .idea/artifacts
 .idea/checkstyleidea-libs/*
 .idea/sqldialects.xml
+.students-api/out
 **/*.iml
+
 
 # Generated files
 target
